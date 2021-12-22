@@ -59,7 +59,7 @@ for filename in glob.glob('%s/plugins/*.py'%'/'.join(os.path.realpath(__file__).
         # collect and sort tags
         translations = list()
         for RootPath in RootPaths:
-            for textValue in lang.getTranslations(RootPath + '/src'):
+            for textValue in lang.getTranslations(RootPath):
                 translations.append(textValue)
         translations = list(set(translations))
         translations.sort()
