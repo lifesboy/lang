@@ -13,8 +13,10 @@ cd ../..
 apt-get install -y perl-doc
 perl -MCPAN -e "install Locale::Maketext::Lexicon"
 
-#BSD, #Linux
+#BSD
 PERL_DIR="/usr/local/lib/perl5/site_perl"
+#Linux
+PERL_DIR="/usr/share/perl5"
 if [ "${os}" == "mac" ]; then
   #MacOS
   PERL_DIR=$PERL5LIB #"~/perl5/lib/perl5"
