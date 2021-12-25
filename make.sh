@@ -8,12 +8,19 @@ XGETTEXT_PL="xgettext.pl -P Locale::Maketext::Extract::Plugin::Volt -u -w -W"
 MSGMERGE="msgmerge -U -N --backup=off"
 MSGFMT="msgfmt"
 
+#BSD
 PERL_DIR="/usr/local/lib/perl5/site_perl"
+#Linux
+PERL_DIR="/usr/local/share/perl/5.28.1/"
+#MacOS
+PERL_DIR="/System/Library/Perl/5.30/"
+
 PERL_NAME="Locale/Maketext/Extract/Plugin"
 
 CURDIR=$(pwd)
 LOCALEDIR="/usr/share/locale/"
 COREDIR="/Volumes/Extra/workspace/selks-gpu/staging/usr/local/"
+PLUGINSDIR="/usr/plugins"
 
 if ! test -n "$LANGUAGES"; then
   LANGUAGES="cs_CZ"
@@ -37,11 +44,10 @@ fi
 
 for LANG in ${LANGUAGES}; do
   TEMPLATE="${LANG}"
-  PLUGINSDIR="/usr/plugins"
   LANGDIR="${LOCALEDIR}/${LANG}/LC_MESSAGES"
 
   if [ $method = "template" ] || [ $method = "all" ]; then
-    cp "${CURDIR}/Volt.pm" ${PERL_DIR}/${PERL_NAME}/
+    cp "${CURDIR}/Volt.pm" "${PERL_DIR}/${PERL_NAME}/"
 	  @: > "${TEMPLATE}.pot"
 
     for ROOTDIR in ${PLUGINSDIRS} ${COREDIR} ${LANGDIR}; do
@@ -56,9 +62,9 @@ for LANG in ${LANGUAGES}; do
   fi
 
   if [ $method = "merge" ] || [ $method = "all" ]; then
-    ${MSGMERGE} ${LANG}.po ${TEMPLATE}.pot
+    ${MSGMERGE} "${LANG}.po" "${TEMPLATE}.pot"
     # strip stale translations
-    sed -i '' -e '/^#~.*/d' ${LANG}.po
+    sed -i '' -e '/^#~.*/d' "${LANG}.po"
   fi
 
   if [ $method = "clean" ] || [ $method = "all" ]; then
