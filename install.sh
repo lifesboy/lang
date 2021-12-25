@@ -25,5 +25,4 @@ PERL_NAME="Locale/Maketext/Extract/Plugin"
 
 mkdir -p "${PERL_DIR}/${PERL_NAME}/"
 cp "./Volt.pm" "${PERL_DIR}/${PERL_NAME}/"
-#@: > "${TEMPLATE}.pot"
 #perl -I lib "${CURDIR}/Volt.pm"

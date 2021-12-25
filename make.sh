@@ -44,11 +44,12 @@ for LANG in ${LANGUAGES}; do
 
     # for ROOTDIR in ${PLUGINSDIRS} ${COREDIR} ${LANGDIR}; do
     for ROOTDIR in ${COREDIR}; do
+      echo > "${CURDIR}/${TEMPLATE}.pot"
       if [ -d "${ROOTDIR}" ]; then
         echo ">>> Scanning ${ROOTDIR}";
         ${XGETTEXT_PL} -D "${ROOTDIR}" -p "${CURDIR}" -o "${TEMPLATE}.pot";
         find "${ROOTDIR}/" -type f -print0 | \
-            xargs -0 "${XGETTEXT}" -j -o "${CURDIR}/${TEMPLATE}.pot";
+            xargs -0 "${XGETTEXT} -j -o ${CURDIR}/${TEMPLATE}.pot";
       fi
     done
 
