@@ -47,7 +47,7 @@ for LANG in ${LANGUAGES}; do
       if [ -d "${ROOTDIR}" ]; then
         echo ">>> Scanning ${ROOTDIR}";
         ${XGETTEXT_PL} -D "${ROOTDIR}" -p "${CURDIR}" -o "${TEMPLATE}.pot";
-        find "${ROOTDIR}" -type f -print0 | \
+        find "${ROOTDIR}/" -type f -print0 | \
             xargs -0 "${XGETTEXT}" -j -o "${CURDIR}/${TEMPLATE}.pot";
       fi
     done
