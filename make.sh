@@ -59,6 +59,9 @@ for LANG in ${LANGUAGES}; do
   if [ $method = "merge" ] || [ $method = "all" ]; then
     ${MSGMERGE} "${LANG}.po" "${TEMPLATE}.pot"
     # strip stale translations
+    #BSD, MacOS
+    #sed -i '' -e '/^#~.*/d' "${LANG}.po"
+    #Linux
     sed -i -e '/^#~.*/d' "${LANG}.po"
   fi
 
