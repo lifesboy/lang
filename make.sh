@@ -15,7 +15,7 @@ CURDIR=$(pwd)
 LOCALEDIR="/usr/share/locale/"
 COREDIR="/Volumes/Extra/workspace/selks-gpu/staging/usr/local/"
 
-if test -n "$LANGUAGES"; then
+if ! test -n "$LANGUAGES"; then
   LANGUAGES="cs_CZ"
   LANGUAGES="${LANGUAGES} de_DE"
   LANGUAGES="${LANGUAGES} es_ES"
@@ -31,14 +31,14 @@ if test -n "$LANGUAGES"; then
   LANGUAGES="${LANGUAGES} zh_CN"
 fi
 
+if [ $method = "src" ] || [ $method = "all" ]; then
+  python3 "${CURDIR}/Scriptsv2/collect.py" "${COREDIR}"
+fi
+
 for LANG in ${LANGUAGES}; do
   TEMPLATE="${LANG}"
   PLUGINSDIR="/usr/plugins"
   LANGDIR="${LOCALEDIR}/${LANG}/LC_MESSAGES"
-
-  if [ $method = "src" ] || [ $method = "all" ]; then
-    python3 "${CURDIR}/Scriptsv2/collect.py" "${COREDIR}"
-  fi
 
   if [ $method = "template" ] || [ $method = "all" ]; then
     cp "${CURDIR}/Volt.pm" ${PERL_DIR}/${PERL_NAME}/
