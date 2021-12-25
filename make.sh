@@ -62,7 +62,18 @@ for LANG in ${LANGUAGES}; do
   fi
 
   if [ $method = "clean" ] || [ $method = "all" ]; then
-    echo "clean"
+	  rm -f "${DESTDIR}${LANGDIR}/OPNsense.mo"
+  fi
+
+  if [ $method = "install" ] || [ $method = "all" ]; then
+	  mkdir -p "${DESTDIR}${LANGDIR}"
+	  ${MSGFMT} --strict -o "${DESTDIR}${LANGDIR}/OPNsense.mo" "${LANG}.po"
+  fi
+
+  if [ $method = "test" ] || [ $method = "all" ]; then
+    ${MSGFMT} -o /dev/null ${LANG}.po
+    # XXX pretty this up
+    echo $(grep -c ^msgid "${LANG}.po") / $(grep -c ^msgstr "${LANG}.po")
   fi
 
 done
