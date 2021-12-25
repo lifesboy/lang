@@ -7,3 +7,5 @@ cd ./gettext-0.21
 ./configure
 make
 make install
+cd ..
+perl -MCPAN -e "install Locale::Maketext::Lexicon"
