@@ -8,14 +8,12 @@ XGETTEXT_PL="xgettext.pl -P Locale::Maketext::Extract::Plugin::Volt -u -w -W"
 MSGMERGE="msgmerge -U -N --backup=off"
 MSGFMT="msgfmt"
 
-## create link to project
-#ln -s "/Volumes/Extra/workspace/selks-gpu/staging/usr/local/opnsense" "/usr/local/opnsense"
-#ln -s "/Volumes/Extra/workspace/selks-gpu/staging/usr/local/wizard" "/usr/local/wizard"
-#cp "/Volumes/Extra/workspace/selks-gpu/staging/usr/local/etc/config.xml" "/usr/local/etc"
-
 CURDIR=$(pwd)
 LOCALEDIR="/usr/share/locale"
+
 INSTALLEDDIR="/usr/local"
+#Dev machine
+INSTALLEDDIR="/Volumes/Extra/workspace/selks-gpu/staging/usr/local"
 COREDIR="${INSTALLEDDIR}/opnsense"
 PLUGINSDIR="/usr/plugins"
 
@@ -62,9 +60,9 @@ for LANG in ${LANGUAGES}; do
     ${MSGMERGE} "${LANG}.po" "${TEMPLATE}.pot"
     # strip stale translations
     #BSD, MacOS
-    #sed -i '' -e '/^#~.*/d' "${LANG}.po"
+    sed -i '' -e '/^#~.*/d' "${LANG}.po"
     #Linux
-    sed -i -e '/^#~.*/d' "${LANG}.po"
+    #sed -i -e '/^#~.*/d' "${LANG}.po"
   fi
 
   if [ $method = "clean" ] || [ $method = "all" ]; then
