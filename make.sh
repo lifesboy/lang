@@ -8,19 +8,23 @@ XGETTEXT_PL="xgettext.pl -P Locale::Maketext::Extract::Plugin::Volt -u -w -W"
 MSGMERGE="msgmerge -U -N --backup=off"
 MSGFMT="msgfmt"
 
+CURDIR=$(pwd)
+LOCALEDIR="/usr/share/locale"
+COREDIR="/Volumes/Extra/workspace/selks-gpu/staging/usr/local"
+PLUGINSDIR="/usr/plugins"
+
 #BSD
 PERL_DIR="/usr/local/lib/perl5/site_perl"
 #Linux
-PERL_DIR="/usr/local/share/perl/5.28.1/"
+PERL_DIR="/usr/local/share/perl/5.28.1"
 #MacOS
-PERL_DIR="/System/Library/Perl/5.30/"
-
+PERL_DIR=$PERL5LIB #"~/perl5/lib/perl5"
 PERL_NAME="Locale/Maketext/Extract/Plugin"
 
-CURDIR=$(pwd)
-LOCALEDIR="/usr/share/locale/"
-COREDIR="/Volumes/Extra/workspace/selks-gpu/staging/usr/local/"
-PLUGINSDIR="/usr/plugins"
+mkdir -p "${PERL_DIR}/${PERL_NAME}/"
+cp "${CURDIR}/Volt.pm" "${PERL_DIR}/${PERL_NAME}/"
+#@: > "${TEMPLATE}.pot"
+#perl -I lib "${CURDIR}/Volt.pm"
 
 if ! test -n "$LANGUAGES"; then
   LANGUAGES="cs_CZ"
@@ -47,15 +51,14 @@ for LANG in ${LANGUAGES}; do
   LANGDIR="${LOCALEDIR}/${LANG}/LC_MESSAGES"
 
   if [ $method = "template" ] || [ $method = "all" ]; then
-    cp "${CURDIR}/Volt.pm" "${PERL_DIR}/${PERL_NAME}/"
-	  @: > "${TEMPLATE}.pot"
 
-    for ROOTDIR in ${PLUGINSDIRS} ${COREDIR} ${LANGDIR}; do
-      if [ -d "${ROOTDIR}/src" ]; then
+    # for ROOTDIR in ${PLUGINSDIRS} ${COREDIR} ${LANGDIR}; do
+    for ROOTDIR in ${COREDIR}; do
+      if [ -d "${ROOTDIR}" ]; then
         echo ">>> Scanning ${ROOTDIR}";
-        ${XGETTEXT_PL} -D ${ROOTDIR}/src -p "${CURDIR}" -o ${TEMPLATE}.pot;
-        find ${ROOTDIR}/src -type f -print0 | \
-            xargs -0 ${XGETTEXT} -j -o "${CURDIR}/${TEMPLATE}.pot";
+        ${XGETTEXT_PL} -D ${ROOTDIR} -p "${CURDIR}" -o ${TEMPLATE}.pot;
+        find ${ROOTDIR} -type f -print0 | \
+            xargs -0 "${XGETTEXT}" -j -o "${CURDIR}/${TEMPLATE}.pot";
       fi
     done
 
@@ -72,4 +75,3 @@ for LANG in ${LANGUAGES}; do
   fi
 
 done
-
