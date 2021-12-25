@@ -10,6 +10,8 @@ MSGFMT="msgfmt"
 
 ## create link to project
 #ln -s "/Volumes/Extra/workspace/selks-gpu/staging/usr/local/opnsense" "/usr/local/opnsense"
+#ln -s "/Volumes/Extra/workspace/selks-gpu/staging/usr/local/wizard" "/usr/local/wizard"
+#cp "/Volumes/Extra/workspace/selks-gpu/staging/usr/local/etc/config.xml" "/usr/local/etc"
 
 CURDIR=$(pwd)
 LOCALEDIR="/usr/share/locale"
