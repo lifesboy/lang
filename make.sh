@@ -8,9 +8,12 @@ XGETTEXT_PL="xgettext.pl -P Locale::Maketext::Extract::Plugin::Volt -u -w -W"
 MSGMERGE="msgmerge -U -N --backup=off"
 MSGFMT="msgfmt"
 
+## create link to project
+#ln -s "/Volumes/Extra/workspace/selks-gpu/staging/usr/local/opnsense" "/usr/local/opnsense"
+
 CURDIR=$(pwd)
 LOCALEDIR="/usr/share/locale"
-COREDIR="/Volumes/Extra/workspace/selks-gpu/staging/usr/local"
+COREDIR="/usr/local/opnsense"
 PLUGINSDIR="/usr/plugins"
 
 if ! test -n "$LANGUAGES"; then
