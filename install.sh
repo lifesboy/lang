@@ -7,6 +7,19 @@ cd ./gettext-0.21
 ./configure
 make
 make install
-cd ..
+cd ../..
 apt-get install -y perl-doc
 perl -MCPAN -e "install Locale::Maketext::Lexicon"
+
+#BSD
+#PERL_DIR="/usr/local/lib/perl5/site_perl"
+#Linux
+#PERL_DIR="/usr/local/share/perl/5.28.1"
+#MacOS
+PERL_DIR=$PERL5LIB #"~/perl5/lib/perl5"
+PERL_NAME="Locale/Maketext/Extract/Plugin"
+
+mkdir -p "${PERL_DIR}/${PERL_NAME}/"
+cp "./Volt.pm" "${PERL_DIR}/${PERL_NAME}/"
+#@: > "${TEMPLATE}.pot"
+#perl -I lib "${CURDIR}/Volt.pm"

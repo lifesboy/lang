@@ -13,19 +13,6 @@ LOCALEDIR="/usr/share/locale"
 COREDIR="/Volumes/Extra/workspace/selks-gpu/staging/usr/local"
 PLUGINSDIR="/usr/plugins"
 
-#BSD
-PERL_DIR="/usr/local/lib/perl5/site_perl"
-#Linux
-PERL_DIR="/usr/local/share/perl/5.28.1"
-#MacOS
-PERL_DIR=$PERL5LIB #"~/perl5/lib/perl5"
-PERL_NAME="Locale/Maketext/Extract/Plugin"
-
-mkdir -p "${PERL_DIR}/${PERL_NAME}/"
-cp "${CURDIR}/Volt.pm" "${PERL_DIR}/${PERL_NAME}/"
-#@: > "${TEMPLATE}.pot"
-#perl -I lib "${CURDIR}/Volt.pm"
-
 if ! test -n "$LANGUAGES"; then
   LANGUAGES="cs_CZ"
   LANGUAGES="${LANGUAGES} de_DE"
