@@ -34,7 +34,7 @@ def getTranslations(root):
     import xml.etree.ElementTree as ET
     import os.path
 
-    configpath = root + "../../conf/config.xml"
+    configpath = root + "/etc/config.xml"
     if not os.path.isfile(configpath):
         return
     tree = ET.parse(configpath)
