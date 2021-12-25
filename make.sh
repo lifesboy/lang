@@ -13,7 +13,8 @@ MSGFMT="msgfmt"
 
 CURDIR=$(pwd)
 LOCALEDIR="/usr/share/locale"
-COREDIR="/usr/local/opnsense"
+INSTALLEDDIR="/usr/local"
+COREDIR="${INSTALLEDDIR}/opnsense"
 PLUGINSDIR="/usr/plugins"
 
 if ! test -n "$LANGUAGES"; then
@@ -33,7 +34,7 @@ if ! test -n "$LANGUAGES"; then
 fi
 
 if [ $method = "src" ] || [ $method = "all" ]; then
-  python3 "${CURDIR}/Scriptsv2/collect.py" "${COREDIR}"
+  python3 "${CURDIR}/Scriptsv2/collect.py" "${INSTALLEDDIR}"
 fi
 
 for LANG in ${LANGUAGES}; do
