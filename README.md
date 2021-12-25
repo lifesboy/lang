@@ -1,6 +1,8 @@
 OPNsense language translation kit
 =================================
 
+##For BSD:
+
 The kit requires additional tools in order to properly extract strings
 from the source code.  You'll need to run this once locally:
 
@@ -25,9 +27,39 @@ Remove the compiled translation files from the system/chroot:
 
 The build system will automatically pick up all registered languages.
 
+##For MacOS, Linux:
+
+The kit requires additional tools in order to properly extract strings
+from the source code.  You'll need to run this once locally:
+
+    # sh install.sh
+
+Regenerate source strings that cannot be found in the template
+generation step (XML contents, etc.):
+
+    # sh make.sh src
+
+Regenerate the translation template using:
+
+    # sh make.sh template
+
+Merge the latest template changes into the actual translations:
+
+    # sh make.sh merge
+
+Remove the compiled translation files from the system/chroot:
+
+    # sh make.sh clean
+
+The build system will automatically pick up all registered languages.
+
+To run all
+
+    # sh make.sh all
+
 Translation guidelines
 ======================
-
+* Translation tool can be found here: https://poedit.net/
 * Translation platform POEditor can be found under https://translate.opnsense.org/
 * Translations should be suggestions, and if you see suggestions either confirm them or change them. We can always change the strings more than once.
 * Translations that need further work are better than no translations. Don't be shy. :)
