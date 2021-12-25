@@ -8,4 +8,5 @@ cd ./gettext-0.21
 make
 make install
 cd ..
+apt-get install -y perl-doc
 perl -MCPAN -e "install Locale::Maketext::Lexicon"
