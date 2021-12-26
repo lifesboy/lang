@@ -6,6 +6,7 @@ setlocale(LC_ALL, 'vi_VN');
 
 // Specify location of translation tables
 // bindtextdomain("OPNsense", "./locale");
+bindtextdomain("OPNsense", __DIR__."../usr/share/locale");
 
 // Choose domain
 textdomain("OPNsense");
