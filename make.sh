@@ -76,6 +76,7 @@ for LANG in ${LANGUAGES}; do
   if [ $method = "install" ] || [ $method = "all" ]; then
 	  mkdir -p "${DESTDIR}${LANGDIR}"
 	  ${MSGFMT} --strict -o "${DESTDIR}${LANGDIR}/OPNsense.mo" "${LANG}.po"
+	  ls -la "${DESTDIR}${LANGDIR}/OPNsense.mo"
   fi
 
   if [ $method = "test" ] || [ $method = "all" ]; then
