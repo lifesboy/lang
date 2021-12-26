@@ -14,8 +14,8 @@ LOCALEDIR="/usr/share/locale"
 INSTALLEDDIR="/usr/local"
 PLUGINSINSTALLEDDIR="/usr/plugins"
 #Dev machine
-#INSTALLEDDIR="/Volumes/Extra/workspace/selks-gpu/staging/usr/local"
-#PLUGINSINSTALLEDDIR="/Volumes/Extra/workspace/opnsense-plugins"
+INSTALLEDDIR="/Volumes/Extra/workspace/selks-gpu/staging/usr/local"
+PLUGINSINSTALLEDDIR="/Volumes/Extra/workspace/opnsense-plugins"
 
 COREDIR="${INSTALLEDDIR}/opnsense"
 PLUGINSDIRS="/usr/plugins"
@@ -63,9 +63,9 @@ for LANG in ${LANGUAGES}; do
     ${MSGMERGE} "${LANG}.po" "${TEMPLATE}.pot"
     # strip stale translations
     #BSD, MacOS
-    #sed -i '' -e '/^#~.*/d' "${LANG}.po"
+    sed -i '' -e '/^#~.*/d' "${LANG}.po"
     #Linux
-    sed -i -e '/^#~.*/d' "${LANG}.po"
+    #sed -i -e '/^#~.*/d' "${LANG}.po"
   fi
 
   if [ $method = "clean" ] || [ $method = "all" ]; then
