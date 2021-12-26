@@ -33,7 +33,6 @@ msgstr " – Zobrazit pokročilé předvolby"
 #, php-format
 msgid ""
 "\"%s\" is not a valid redirect target IP address, network or host alias."
-msgstr ""
 "„%s“ není platná IP adresa cíle přesměrování, sítě nebo alternativní název "
 "stroje."
 
