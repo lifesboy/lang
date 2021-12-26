@@ -9,6 +9,7 @@ MSGMERGE="msgmerge -U -N --backup=off"
 MSGFMT="msgfmt"
 
 CURDIR=$(pwd)
+DESTDIR=
 LOCALEDIR="/usr/share/locale"
 
 INSTALLEDDIR="/usr/local"
@@ -16,6 +17,7 @@ PLUGINSINSTALLEDDIR="/usr/plugins"
 #Dev machine
 INSTALLEDDIR="/Volumes/Extra/workspace/selks-gpu/staging/usr/local"
 PLUGINSINSTALLEDDIR="/Volumes/Extra/workspace/opnsense-plugins"
+DESTDIR=$CURDIR
 
 COREDIR="${INSTALLEDDIR}/opnsense"
 PLUGINSDIRS=$(find $PLUGINSINSTALLEDDIR -type d -maxdepth 3 -regex ".*/src")
