@@ -14,13 +14,16 @@ LOCALEDIR="/usr/share/locale"
 
 INSTALLEDDIR="/usr/local"
 PLUGINSINSTALLEDDIR="/usr/plugins"
+LANGINSTALLEDDIR="/usr/lang"
 #Dev machine
 INSTALLEDDIR="/Volumes/Extra/workspace/selks-gpu/staging/usr/local"
 PLUGINSINSTALLEDDIR="/Volumes/Extra/workspace/opnsense-plugins"
+LANGINSTALLEDDIR=$CURDIR
 DESTDIR=$CURDIR
 
 COREDIR="${INSTALLEDDIR}/opnsense"
 PLUGINSDIRS=$(find $PLUGINSINSTALLEDDIR -type d -maxdepth 3 -regex ".*/src")
+LANGDIRS="${LANGINSTALLEDDIR}/src"
 
 if ! test -n "$LANGUAGES"; then
   LANGUAGES="cs_CZ"
@@ -50,8 +53,7 @@ for LANG in ${LANGUAGES}; do
   if [ $method = "template" ] || [ $method = "all" ]; then
     echo > "${CURDIR}/${TEMPLATE}.pot"
 
-    # for ROOTDIR in ${PLUGINSDIRS} ${COREDIR} ${LANGDIR}; do
-    for ROOTDIR in ${PLUGINSDIRS} ${COREDIR}; do
+    for ROOTDIR in ${PLUGINSDIRS} ${COREDIR} ${LANGDIRS}; do
       if [ -d "${ROOTDIR}" ]; then
         echo ">>> Scanning ${ROOTDIR}";
         ${XGETTEXT_PL} -D "${ROOTDIR}" -p "${CURDIR}" -o "${TEMPLATE}.pot";
