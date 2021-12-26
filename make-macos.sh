@@ -18,7 +18,7 @@ INSTALLEDDIR="/Volumes/Extra/workspace/selks-gpu/staging/usr/local"
 PLUGINSINSTALLEDDIR="/Volumes/Extra/workspace/opnsense-plugins"
 
 COREDIR="${INSTALLEDDIR}/opnsense"
-PLUGINSDIRS="/usr/plugins"
+PLUGINSDIRS=$(find $PLUGINSINSTALLEDDIR -type d -maxdepth 3 -regex ".*/src")
 
 if ! test -n "$LANGUAGES"; then
   LANGUAGES="cs_CZ"
@@ -37,7 +37,7 @@ if ! test -n "$LANGUAGES"; then
 fi
 
 if [ $method = "src" ] || [ $method = "all" ]; then
-  python3 "${CURDIR}/Scriptsv2/collect.py" ${PLUGINSINSTALLEDDIR} "${INSTALLEDDIR}"
+  python3 "${CURDIR}/Scriptsv2/collect.py" ${PLUGINSDIRS} ${INSTALLEDDIR}
 fi
 
 for LANG in ${LANGUAGES}; do
@@ -46,10 +46,10 @@ for LANG in ${LANGUAGES}; do
   LANGDIR="${LOCALEDIR}/${LANG}/LC_MESSAGES"
 
   if [ $method = "template" ] || [ $method = "all" ]; then
+    echo > "${CURDIR}/${TEMPLATE}.pot"
 
     # for ROOTDIR in ${PLUGINSDIRS} ${COREDIR} ${LANGDIR}; do
     for ROOTDIR in ${PLUGINSDIRS} ${COREDIR}; do
-      echo > "${CURDIR}/${TEMPLATE}.pot"
       if [ -d "${ROOTDIR}" ]; then
         echo ">>> Scanning ${ROOTDIR}";
         ${XGETTEXT_PL} -D "${ROOTDIR}" -p "${CURDIR}" -o "${TEMPLATE}.pot";
