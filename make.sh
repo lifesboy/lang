@@ -41,6 +41,7 @@ if [ $method = "src" ] || [ $method = "all" ]; then
 fi
 
 for LANG in ${LANGUAGES}; do
+  echo "\n>>> ${LANG}"
   TEMPLATE="${LANG}"
   LANGDIR="${LOCALEDIR}/${LANG}/LC_MESSAGES"
 
