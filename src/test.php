@@ -6,6 +6,10 @@ $locale = empty($argv[1]) ? 'vi_VN' : $argv[1];
 $lang_encoding = $locale . '.UTF-8';
 $textdomain = 'OPNsense';
 
+putenv("LC_ALL=$locale");
+$res = setlocale(LC_ALL, $locale);
+var_dump($res);
+
 putenv('LANG=' . $lang_encoding);
 textdomain($textdomain);
 bindtextdomain($textdomain, DESTDIR."/usr/share/locale");
