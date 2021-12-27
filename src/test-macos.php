@@ -1,16 +1,15 @@
 <?php
 define("DESTDIR", __DIR__."/..");
 $locale = empty($argv[1]) ? 'vi_VN' : $argv[1];
-putenv("LC_ALL=$locale");
-$res = setlocale(LC_ALL, $locale);
+
+$lang_encoding = $locale . '.UTF-8';
+$textdomain = 'OPNsense';
+
+putenv('LANG=' . $lang_encoding);
+textdomain($textdomain);
+bindtextdomain($textdomain, DESTDIR."/usr/share/locale");
+$res = bind_textdomain_codeset($textdomain, $lang_encoding);
 var_dump($res);
-
-// Specify location of translation tables
-// bindtextdomain("OPNsense", "./locale");
-bindtextdomain("OPNsense", DESTDIR."/usr/share/locale");
-
-// Choose domain
-textdomain("OPNsense");
 
 // Translation is looking for in ./locale/$locale/LC_MESSAGES/OPNsense.mo now
 
