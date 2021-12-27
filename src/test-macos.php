@@ -1,5 +1,5 @@
 <?php
-define("DESTDIR", "");
+define("DESTDIR", __DIR__."/..");
 // Set language to Vietnamese
 $locale = 'vi_VN';
 putenv("LC_ALL=$locale");
