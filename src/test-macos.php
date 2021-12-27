@@ -1,7 +1,6 @@
 <?php
 define("DESTDIR", __DIR__."/..");
-// Set language to Vietnamese
-$locale = 'vi_VN';
+$locale = empty($argv[1]) ? 'vi_VN' : $argv[1];
 putenv("LC_ALL=$locale");
 $res = setlocale(LC_ALL, $locale);
 var_dump($res);
