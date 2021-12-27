@@ -11,6 +11,9 @@ textdomain($textdomain);
 bindtextdomain($textdomain, DESTDIR."/usr/share/locale");
 $res = bind_textdomain_codeset($textdomain, $lang_encoding);
 var_dump($res);
+putenv("LC_ALL=$locale");
+$res = setlocale(LC_ALL, $locale);
+var_dump($res);
 
 // Translation is looking for in ./locale/$locale/LC_MESSAGES/OPNsense.mo now
 
