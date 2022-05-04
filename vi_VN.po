@@ -5723,7 +5723,7 @@ msgstr ""
 #
 # File: /usr/lang/src/acl.php, line: 34
 msgid "Dashboard (all)"
-msgstr ""
+msgstr "Bảng tóm tắt (tất cả)"
 
 #
 # File: /usr/lang/src/acl.php, line: 35
@@ -6103,7 +6103,7 @@ msgstr ""
 #
 # File: /usr/lang/src/acl.php, line: 110
 msgid "Lobby: Login / Logout / Dashboard"
-msgstr ""
+msgstr "Tiền  sảnh: Đăng nhập / Đăng xuất / Bảng tóm tắt"
 
 msgid "Nut"
 msgstr ""
@@ -23140,7 +23140,7 @@ msgid "Daily"
 msgstr ""
 
 msgid "Dashboard"
-msgstr ""
+msgstr "Bảng tóm tắt"
 
 #
 # File: /usr/lang/src/models.php, line: 407
@@ -25501,7 +25501,7 @@ msgid "Reporter"
 msgstr ""
 
 msgid "Reporting"
-msgstr ""
+msgstr "Báo cáo, thống kê"
 
 msgid "Requests Per Minute"
 msgstr ""
