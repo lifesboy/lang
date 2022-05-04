@@ -18931,7 +18931,7 @@ msgid "Syslog level"
 msgstr ""
 
 msgid "System"
-msgstr ""
+msgstr "Hệ thống"
 
 msgid "System Command"
 msgstr ""
