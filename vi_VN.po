@@ -15357,7 +15357,7 @@ msgid "Passive Interfaces"
 msgstr ""
 
 msgid "Password"
-msgstr " Mật khẩu"
+msgstr "Mật khẩu"
 
 msgid "Password for admin user"
 msgstr ""
@@ -24075,7 +24075,7 @@ msgid "Load Balance"
 msgstr ""
 
 msgid "Lobby"
-msgstr ""
+msgstr "Tổng quan"
 
 msgid "Local"
 msgstr ""
