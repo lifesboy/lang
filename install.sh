@@ -10,7 +10,7 @@ cd ./gettext-0.21
 make
 make install
 cd ../..
-apt-get install -y perl-doc
+apt-get install -y perl-doc libgettextpo-dev
 perl -MCPAN -e "install Locale::Maketext::Lexicon"
 
 #BSD
