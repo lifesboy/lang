@@ -15357,7 +15357,7 @@ msgid "Passive Interfaces"
 msgstr ""
 
 msgid "Password"
-msgstr ""
+msgstr " Mật khẩu"
 
 msgid "Password for admin user"
 msgstr ""
@@ -21279,7 +21279,7 @@ msgid "Useragent string"
 msgstr ""
 
 msgid "Username"
-msgstr ""
+msgstr "Tài khoản"
 
 msgid "Username Header"
 msgstr ""
